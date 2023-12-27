@@ -28,7 +28,7 @@ public class EmailDisposableValidator : Validator.Validator, IEmailDisposableVal
         });
     }
 
-    public async ValueTask<bool> Validate(string email)
+    public async ValueTask<bool> Validate(string email, bool log = false)
     {
         string? domain = _stringUtil.GetDomainFromEmail(email);
 
@@ -38,7 +38,27 @@ public class EmailDisposableValidator : Validator.Validator, IEmailDisposableVal
         domain = domain.ToLowerInvariant();
 
         if ((await _emailDomainsSet.Get()).Contains(domain))
+        {
+            if (log)
+                Logger.LogWarning("Email ({email}) detected as disposable", email);
+
             return false;
+        }
+
+        return true;
+    }
+
+    public async ValueTask<bool> ValidateDomain(string domain, bool log = false)
+    {
+        domain = domain.ToLowerInvariant();
+
+        if ((await _emailDomainsSet.Get()).Contains(domain))
+        {
+            if (log)
+                Logger.LogWarning("Domain ({domain}) detected as disposable", domain);
+
+            return false;
+        }
 
         return true;
     }

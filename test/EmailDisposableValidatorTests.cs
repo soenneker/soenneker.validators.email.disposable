@@ -20,7 +20,7 @@ public class EmailDisposableValidatorTests : FixturedUnitTest
     [Fact]
     public async Task Should_NotHaveValidationError_When_EmailIsNotDisposable()
     {
-        var email = "test@gmail.com";
+        const string email = "test@gmail.com";
 
         bool result = await _validator.Validate(email);
 
@@ -30,7 +30,7 @@ public class EmailDisposableValidatorTests : FixturedUnitTest
     [Fact]
     public async Task Should_HaveValidationError_When_EmailIsDisposable()
     {
-        var email = "test@mailinator.com";
+        const string email = "test@mailinator.com";
 
         bool result = await _validator.Validate(email);
 
