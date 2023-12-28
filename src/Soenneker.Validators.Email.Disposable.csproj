@@ -42,7 +42,7 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
         <PackageReference Include="Soenneker.Data.Email.Disposables" Version="2.1.17" />
-        <PackageReference Include="Soenneker.Extensions.Enumerable.String" Version="2.1.83" />
+        <PackageReference Include="Soenneker.Extensions.Enumerable.String" Version="2.1.90" />
         <PackageReference Include="Soenneker.Utils.File" Version="2.1.162" />
         <PackageReference Include="Soenneker.Utils.String" Version="2.1.186" />
         <PackageReference Include="Soenneker.Validators.Validator" Version="2.1.53" />
