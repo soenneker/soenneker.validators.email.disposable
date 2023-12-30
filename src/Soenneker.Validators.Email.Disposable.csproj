@@ -9,7 +9,7 @@
 
     <PropertyGroup>
         <Description>A validation module checking if a given email's domain is disposable/temporary, updated daily (if available)</Description>
-        <Version Condition="'$(BUILD_VERSION)' == ''">2.1.0</Version>
+        <Version Condition="'$(BUILD_VERSION)' == ''">2.2.0</Version>
         <Version Condition="'$(BUILD_VERSION)' != ''">$(BUILD_VERSION)</Version>
         <AssemblyName>Soenneker.Validators.Email.Disposable</AssemblyName>
         <PackageId>Soenneker.Validators.Email.Disposable</PackageId>
