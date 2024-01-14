@@ -42,7 +42,7 @@
     <ItemGroup>
         <PackageReference Include="Soenneker.Data.Email.Disposables" Version="2.1.36" />
         <PackageReference Include="Soenneker.Extensions.Enumerable.String" Version="2.1.104" />
-        <PackageReference Include="Soenneker.Utils.File" Version="2.1.195" />
+        <PackageReference Include="Soenneker.Utils.File" Version="2.1.196" />
         <PackageReference Include="Soenneker.Utils.String" Version="2.1.249" />
         <PackageReference Include="Soenneker.Validators.Validator" Version="2.1.67" />
     </ItemGroup>
