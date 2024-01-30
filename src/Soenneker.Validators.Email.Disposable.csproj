@@ -40,7 +40,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Soenneker.Data.Email.Disposables" Version="2.1.51" />
+        <PackageReference Include="Soenneker.Data.Email.Disposables" Version="2.1.52" />
         <PackageReference Include="Soenneker.Extensions.Enumerable.String" Version="2.1.134" />
         <PackageReference Include="Soenneker.Utils.File" Version="2.1.245" />
         <PackageReference Include="Soenneker.Utils.String" Version="2.1.333" />
