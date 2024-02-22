@@ -41,11 +41,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Soenneker.Data.Email.Disposables" Version="2.1.70" />
-        <PackageReference Include="Soenneker.Extensions.Enumerable.String" Version="2.1.175" />
-        <PackageReference Include="Soenneker.Utils.File" Version="2.1.347" />
-        <PackageReference Include="Soenneker.Utils.String" Version="2.1.457" />
-        <PackageReference Include="Soenneker.Validators.Validator" Version="2.1.131" />
+        <PackageReference Include="Soenneker.Data.Email.Disposables" Version="2.1.75" />
+        <PackageReference Include="Soenneker.Extensions.Enumerable.String" Version="2.1.192" />
+        <PackageReference Include="Soenneker.Utils.File" Version="2.1.374" />
+        <PackageReference Include="Soenneker.Utils.String" Version="2.1.502" />
+        <PackageReference Include="Soenneker.Validators.Validator" Version="2.1.146" />
     </ItemGroup>
     
 </Project>
