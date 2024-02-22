@@ -37,11 +37,12 @@
         <None Include="..\README.md" Pack="true" PackagePath="\" />
         <None Include="..\LICENSE" Pack="true" PackagePath="\" />
         <None Include="..\icon.png" Pack="true" PackagePath="\" />
-        <Content Include="bin\Release\net8.0\Resources\data-email-disposables.txt" Pack="true" PackageCopyToOutput="true" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Soenneker.Data.Email.Disposables" Version="2.1.75" />
+        <PackageReference Include="Soenneker.Data.Email.Disposables" Version="2.1.75">
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
         <PackageReference Include="Soenneker.Extensions.Enumerable.String" Version="2.1.192" />
         <PackageReference Include="Soenneker.Utils.File" Version="2.1.374" />
         <PackageReference Include="Soenneker.Utils.String" Version="2.1.502" />
