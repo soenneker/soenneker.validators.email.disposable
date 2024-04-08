@@ -7,6 +7,7 @@ using Soenneker.Utils.AsyncSingleton;
 using Soenneker.Utils.File.Abstract;
 using System;
 using Soenneker.Extensions.Enumerable.String;
+using Soenneker.Extensions.String;
 using Soenneker.Utils.String.Abstract;
 
 namespace Soenneker.Validators.Email.Disposable;
@@ -35,7 +36,7 @@ public class EmailDisposableValidator : Validator.Validator, IEmailDisposableVal
         if (domain == null)
             return true;
 
-        domain = domain.ToLowerInvariant();
+        domain = domain.ToLowerInvariantFast();
 
         if ((await _emailDomainsSet.Get()).Contains(domain))
         {
@@ -50,7 +51,7 @@ public class EmailDisposableValidator : Validator.Validator, IEmailDisposableVal
 
     public async ValueTask<bool> ValidateDomain(string domain, bool log = false)
     {
-        domain = domain.ToLowerInvariant();
+        domain = domain.ToLowerInvariantFast();
 
         if ((await _emailDomainsSet.Get()).Contains(domain))
         {
