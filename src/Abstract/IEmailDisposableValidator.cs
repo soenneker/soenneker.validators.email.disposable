@@ -1,5 +1,6 @@
 using Soenneker.Validators.Validator.Abstract;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Soenneker.Validators.Email.Disposable.Abstract;
@@ -14,14 +15,16 @@ public interface IEmailDisposableValidator : IValidator, IAsyncDisposable, IDisp
     /// </summary>
     /// <param name="email">The email to be validated.</param>
     /// <param name="log"></param>
+    /// <param name="cancellationToken"></param>
     /// <returns>True if the email is disposable/temporary, false otherwise.</returns>
-    ValueTask<bool> Validate(string email, bool log = false);
+    ValueTask<bool> Validate(string email, bool log = false, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Validates if the given domain is disposable/temporary.
     /// </summary>
     /// <param name="domain">The domain to be validated. It is lowered within this method before validating.</param>
     /// <param name="log"></param>
+    /// <param name="cancellationToken"></param>
     /// <returns>True if the email is disposable/temporary, false otherwise.</returns>
-    ValueTask<bool> ValidateDomain(string domain, bool log = false);
+    ValueTask<bool> ValidateDomain(string domain, bool log = false, CancellationToken cancellationToken = default);
 }

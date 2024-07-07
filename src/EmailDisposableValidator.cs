@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using Soenneker.Utils.AsyncSingleton;
 using Soenneker.Utils.File.Abstract;
 using System;
+using System.Threading;
 using Soenneker.Extensions.Enumerable.String;
 using Soenneker.Extensions.String;
 using Soenneker.Utils.String.Abstract;
+using Soenneker.Extensions.ValueTask;
 
 namespace Soenneker.Validators.Email.Disposable;
 
@@ -21,15 +23,15 @@ public class EmailDisposableValidator : Validator.Validator, IEmailDisposableVal
     public EmailDisposableValidator(IFileUtil fileUtil, IStringUtil stringUtil, ILogger<EmailDisposableValidator> logger) : base(logger)
     {
         _stringUtil = stringUtil;
-        _emailDomainsSet = new AsyncSingleton<HashSet<string>>(async () =>
+        _emailDomainsSet = new AsyncSingleton<HashSet<string>>(async (token, _) =>
         {
-            IEnumerable<string> enumerable = (await fileUtil.ReadFileAsLines(Path.Combine("Resources", "data-email-disposables.txt"))).ToLower();
+            IEnumerable<string> enumerable = (await fileUtil.ReadFileAsLines(Path.Combine("Resources", "data-email-disposables.txt"), token).NoSync()).ToLower();
             var hashSet = new HashSet<string>(enumerable);
             return hashSet;
         });
     }
 
-    public async ValueTask<bool> Validate(string email, bool log = false)
+    public async ValueTask<bool> Validate(string email, bool log = false, CancellationToken cancellationToken = default)
     {
         string? domain = _stringUtil.GetDomainFromEmail(email);
 
@@ -38,7 +40,7 @@ public class EmailDisposableValidator : Validator.Validator, IEmailDisposableVal
 
         domain = domain.ToLowerInvariantFast();
 
-        if ((await _emailDomainsSet.Get()).Contains(domain))
+        if ((await _emailDomainsSet.Get(cancellationToken)).Contains(domain))
         {
             if (log)
                 Logger.LogWarning("Email ({email}) detected as disposable", email);
@@ -49,11 +51,11 @@ public class EmailDisposableValidator : Validator.Validator, IEmailDisposableVal
         return true;
     }
 
-    public async ValueTask<bool> ValidateDomain(string domain, bool log = false)
+    public async ValueTask<bool> ValidateDomain(string domain, bool log = false, CancellationToken cancellationToken = default)
     {
         domain = domain.ToLowerInvariantFast();
 
-        if ((await _emailDomainsSet.Get()).Contains(domain))
+        if ((await _emailDomainsSet.Get(cancellationToken)).Contains(domain))
         {
             if (log)
                 Logger.LogWarning("Domain ({domain}) detected as disposable", domain);
