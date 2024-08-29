@@ -44,7 +44,7 @@
         </PackageReference>
         <PackageReference Include="Soenneker.Extensions.Enumerable.String" Version="2.1.412" />
         <PackageReference Include="Soenneker.Utils.File" Version="2.1.911" />
-        <PackageReference Include="Soenneker.Utils.String" Version="2.1.1074" />
+        <PackageReference Include="Soenneker.Utils.String" Version="2.1.1079" />
         <PackageReference Include="Soenneker.Validators.Validator" Version="2.1.283" />
     </ItemGroup>
     
