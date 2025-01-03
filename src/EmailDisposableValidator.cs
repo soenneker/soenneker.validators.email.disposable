@@ -27,7 +27,7 @@ public class EmailDisposableValidator : Validator.Validator, IEmailDisposableVal
 
         _emailDomainsSet = new AsyncSingleton<HashSet<string>>(async (token, _) =>
         {
-            IEnumerable<string> enumerable = (await fileUtil.ReadFileAsLines(Path.Combine(AppContext.BaseDirectory, "Resources", "data-email-disposables.txt"), token).NoSync()).ToLower();
+            IEnumerable<string> enumerable = (await fileUtil.ReadAsLines(Path.Combine(AppContext.BaseDirectory, "Resources", "data-email-disposables.txt"), token).NoSync()).ToLower();
             return enumerable.ToHashSet();
         });
     }
