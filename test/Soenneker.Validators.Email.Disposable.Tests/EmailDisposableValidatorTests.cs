@@ -22,7 +22,7 @@ public class EmailDisposableValidatorTests : FixturedUnitTest
     {
         const string email = "test@gmail.com";
 
-        bool result = await _validator.Validate(email);
+        bool result = await _validator.Validate(email, cancellationToken: CancellationToken);
 
         result.Should().BeTrue();
     }
@@ -32,7 +32,7 @@ public class EmailDisposableValidatorTests : FixturedUnitTest
     {
         const string email = "test@mailinator.com";
 
-        bool result = await _validator.Validate(email);
+        bool result = await _validator.Validate(email, cancellationToken: CancellationToken);
 
         result.Should().BeFalse();
     }

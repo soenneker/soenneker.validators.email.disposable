@@ -16,10 +16,9 @@ public static class EmailDisposableValidatorRegistrar
     /// </summary>
     public static IServiceCollection AddEmailDisposableValidatorAsSingleton(this IServiceCollection services)
     {
-        services.AddFileUtilAsSingleton();
-        services.AddStringUtilAsSingleton();
-
-        services.TryAddSingleton<IEmailDisposableValidator, EmailDisposableValidator>();
+        services.AddFileUtilAsSingleton()
+                .AddStringUtilAsSingleton()
+                .TryAddSingleton<IEmailDisposableValidator, EmailDisposableValidator>();
 
         return services;
     }
@@ -29,10 +28,9 @@ public static class EmailDisposableValidatorRegistrar
     /// </summary>
     public static IServiceCollection AddEmailDisposableValidatorAsScoped(this IServiceCollection services)
     {
-        services.AddFileUtilAsScoped();
-        services.AddStringUtilAsScoped();
-
-        services.TryAddScoped<IEmailDisposableValidator, EmailDisposableValidator>();
+        services.AddFileUtilAsScoped()
+                .AddStringUtilAsScoped()
+                .TryAddScoped<IEmailDisposableValidator, EmailDisposableValidator>();
 
         return services;
     }
