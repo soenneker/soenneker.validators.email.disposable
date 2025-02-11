@@ -16,7 +16,7 @@ public interface IEmailDisposableValidator : IValidator, IAsyncDisposable, IDisp
     /// <param name="email">The email to be validated.</param>
     /// <param name="log"></param>
     /// <param name="cancellationToken"></param>
-    /// <returns>True if the email is disposable/temporary, false otherwise.</returns>
+    /// <returns>False if the email is disposable/temporary, true otherwise.</returns>
     ValueTask<bool> Validate(string email, bool log = false, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -25,6 +25,6 @@ public interface IEmailDisposableValidator : IValidator, IAsyncDisposable, IDisp
     /// <param name="domain">The domain to be validated. It is lowered within this method before validating.</param>
     /// <param name="log"></param>
     /// <param name="cancellationToken"></param>
-    /// <returns>True if the email is disposable/temporary, false otherwise.</returns>
+    /// <returns>False if the email is disposable/temporary, true otherwise.</returns>
     ValueTask<bool> ValidateDomain(string domain, bool log = false, CancellationToken cancellationToken = default);
 }

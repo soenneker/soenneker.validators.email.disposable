@@ -10,3 +10,31 @@
 ```
 dotnet add package Soenneker.Validators.Email.Disposable
 ```
+
+Register `EmailDisposableValidator` in your `.NET` application using `IServiceCollection`:
+
+```csharp
+services.AddEmailDisposableValidatorAsSingleton();
+```
+
+## Usage
+
+Inject `IEmailDisposableValidator` and validate emails or domains:
+
+```csharp
+public class MyService
+{
+    private readonly IEmailDisposableValidator _validator;
+
+    public MyService(IEmailDisposableValidator validator)
+    {
+        _validator = validator;
+    }
+
+    // Returns FALSE if disposable (i.e. mailinator.com). TRUE if non-disposable.
+    public async Task<bool> IsNonDisposableEmail(string email)
+    {
+        return await _validator.Validate(email);
+    }
+}
+```

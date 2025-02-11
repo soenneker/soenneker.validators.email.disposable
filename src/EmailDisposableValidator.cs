@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Soenneker.Utils.AsyncSingleton;
 using Soenneker.Utils.File.Abstract;
 using System;
-using System.Linq;
 using System.Threading;
 using Soenneker.Extensions.Enumerable.String;
 using Soenneker.Extensions.String;
@@ -28,7 +27,7 @@ public class EmailDisposableValidator : Validator.Validator, IEmailDisposableVal
         _emailDomainsSet = new AsyncSingleton<HashSet<string>>(async (token, _) =>
         {
             IEnumerable<string> enumerable = (await fileUtil.ReadAsLines(Path.Combine(AppContext.BaseDirectory, "Resources", "data-email-disposables.txt"), token).NoSync()).ToLower();
-            return enumerable.ToHashSet();
+            return [.. enumerable];
         });
     }
 
