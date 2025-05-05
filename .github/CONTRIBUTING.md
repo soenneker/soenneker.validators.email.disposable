@@ -1,4 +1,4 @@
-# Contributing to Soenneker.Validators.Email.Disposable
+﻿# Contributing to Soenneker.Validators.Email.Disposable
 
 We're excited that you're interested in contributing!
 
