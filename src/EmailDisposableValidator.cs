@@ -15,7 +15,7 @@ using Soenneker.Extensions.ValueTask;
 namespace Soenneker.Validators.Email.Disposable;
 
 /// <inheritdoc cref="IEmailDisposableValidator"/>
-public class EmailDisposableValidator : Validator.Validator, IEmailDisposableValidator
+public sealed class EmailDisposableValidator : Validator.Validator, IEmailDisposableValidator
 {
     private readonly IStringUtil _stringUtil;
     private readonly AsyncSingleton<HashSet<string>> _emailDomainsSet;
@@ -26,7 +26,7 @@ public class EmailDisposableValidator : Validator.Validator, IEmailDisposableVal
 
         _emailDomainsSet = new AsyncSingleton<HashSet<string>>(async (token, _) =>
         {
-            IEnumerable<string> enumerable = (await fileUtil.ReadAsLines(Path.Combine(AppContext.BaseDirectory, "Resources", "data-email-disposables.txt"), token).NoSync()).ToLower();
+            IEnumerable<string> enumerable = (await fileUtil.ReadAsLines(Path.Combine(AppContext.BaseDirectory, "Resources", "data-email-disposables.txt"), true, token).NoSync()).ToLower();
             return [.. enumerable];
         });
     }
@@ -68,15 +68,11 @@ public class EmailDisposableValidator : Validator.Validator, IEmailDisposableVal
 
     public ValueTask DisposeAsync()
     {
-        GC.SuppressFinalize(this);
-
         return _emailDomainsSet.DisposeAsync();
     }
 
     public void Dispose()
     {
-        GC.SuppressFinalize(this);
-
         _emailDomainsSet.Dispose();
     }
 }
