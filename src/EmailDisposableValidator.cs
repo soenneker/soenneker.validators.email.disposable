@@ -1,7 +1,6 @@
 using Microsoft.Extensions.Logging;
 using Soenneker.Validators.Email.Disposable.Abstract;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 using Soenneker.Utils.AsyncSingleton;
 using Soenneker.Utils.File.Abstract;
@@ -10,6 +9,7 @@ using System.Threading;
 using Soenneker.Utils.String.Abstract;
 using Soenneker.Extensions.ValueTask;
 using Soenneker.Extensions.String;
+using Soenneker.Utils.Paths.Resources;
 
 namespace Soenneker.Validators.Email.Disposable;
 
@@ -25,9 +25,10 @@ public sealed class EmailDisposableValidator : Validator.Validator, IEmailDispos
 
         _emailDomainsSet = new AsyncSingleton<HashSet<string>>(async (token, _) =>
         {
-            return await fileUtil.ReadToHashSet(Path.Combine(AppContext.BaseDirectory, "Resources", "data-email-disposables.txt"),
-                                     StringComparer.InvariantCultureIgnoreCase, cancellationToken: token)
-                                 .NoSync();
+            string path = ResourcesPathUtil.GetResourceFilePath("data-email-disposables.txt");
+
+            return await fileUtil.ReadToHashSet(path, StringComparer.InvariantCultureIgnoreCase, cancellationToken: token)
+                .NoSync();
         });
     }
 
@@ -48,7 +49,8 @@ public sealed class EmailDisposableValidator : Validator.Validator, IEmailDispos
         }
 
         // The reason for not calling ValidateDomain() here is so we can full the full email
-        if ((await _emailDomainsSet.Get(cancellationToken).NoSync()).Contains(domain))
+        if ((await _emailDomainsSet.Get(cancellationToken)
+                .NoSync()).Contains(domain))
         {
             if (log)
                 Logger.LogWarning("Email ({email}) detected as disposable", email);
@@ -67,7 +69,8 @@ public sealed class EmailDisposableValidator : Validator.Validator, IEmailDispos
             return false;
         }
 
-        if ((await _emailDomainsSet.Get(cancellationToken).NoSync()).Contains(domain))
+        if ((await _emailDomainsSet.Get(cancellationToken)
+                .NoSync()).Contains(domain))
         {
             if (log)
                 Logger.LogWarning("Domain ({domain}) detected as disposable", domain);

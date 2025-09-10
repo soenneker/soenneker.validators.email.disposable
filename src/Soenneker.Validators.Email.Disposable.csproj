@@ -46,6 +46,7 @@
         <PackageReference Include="Soenneker.Utils.File" Version="3.0.1980" />
         <PackageReference Include="Soenneker.Utils.String" Version="3.0.2731" />
         <PackageReference Include="Soenneker.Validators.Validator" Version="3.0.702" />
+        <PackageReference Include="Soenneker.Utils.Paths.Resources" Version="3.0.7" />
     </ItemGroup>
     
 </Project>
