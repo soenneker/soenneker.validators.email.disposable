@@ -23,9 +23,9 @@ public sealed class EmailDisposableValidator : Validator.Validator, IEmailDispos
     {
         _stringUtil = stringUtil;
 
-        _emailDomainsSet = new AsyncSingleton<HashSet<string>>(async (token, _) =>
+        _emailDomainsSet = new AsyncSingleton<HashSet<string>>(async (token) =>
         {
-            string path = await ResourcesPathUtil.GetResourceFilePath("data-email-disposables.txt").NoSync();
+            string path = await ResourcesPathUtil.GetResourceFilePath("data-email-disposables.txt", token).NoSync();
 
             return await fileUtil.ReadToHashSet(path, StringComparer.InvariantCultureIgnoreCase, cancellationToken: token)
                 .NoSync();
