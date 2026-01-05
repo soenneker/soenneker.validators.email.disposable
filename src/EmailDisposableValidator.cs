@@ -18,18 +18,22 @@ public sealed class EmailDisposableValidator : Validator.Validator, IEmailDispos
 {
     private readonly IStringUtil _stringUtil;
     private readonly AsyncSingleton<HashSet<string>> _emailDomainsSet;
+    private readonly IFileUtil _fileUtil;
 
     public EmailDisposableValidator(IFileUtil fileUtil, IStringUtil stringUtil, ILogger<EmailDisposableValidator> logger) : base(logger)
     {
+        _fileUtil = fileUtil;
         _stringUtil = stringUtil;
 
-        _emailDomainsSet = new AsyncSingleton<HashSet<string>>(async (token) =>
-        {
-            string path = await ResourcesPathUtil.GetResourceFilePath("data-email-disposables.txt", token).NoSync();
+        _emailDomainsSet = new AsyncSingleton<HashSet<string>>(CreateEmailDomainsSet);
+    }
 
-            return await fileUtil.ReadToHashSet(path, StringComparer.InvariantCultureIgnoreCase, cancellationToken: token)
-                .NoSync();
-        });
+    private async ValueTask<HashSet<string>> CreateEmailDomainsSet(CancellationToken token)
+    {
+        string path = await ResourcesPathUtil.GetResourceFilePath("data-email-disposables.txt", token).NoSync();
+
+        return await _fileUtil.ReadToHashSet(path, StringComparer.InvariantCultureIgnoreCase, cancellationToken: token)
+            .NoSync();
     }
 
     public async ValueTask<bool> Validate(string email, bool log = false, CancellationToken cancellationToken = default)
