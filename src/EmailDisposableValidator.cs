@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Soenneker.Utils.AsyncSingleton;
 using Soenneker.Utils.File.Abstract;
+using Soenneker.Utils.Paths.Resources.Abstract;
 using System;
 using System.Threading;
 using Soenneker.Utils.String.Abstract;
 using Soenneker.Extensions.ValueTask;
 using Soenneker.Extensions.String;
-using Soenneker.Utils.Paths.Resources;
 
 namespace Soenneker.Validators.Email.Disposable;
 
@@ -19,10 +19,12 @@ public sealed class EmailDisposableValidator : Validator.Validator, IEmailDispos
     private readonly IStringUtil _stringUtil;
     private readonly AsyncSingleton<HashSet<string>> _emailDomainsSet;
     private readonly IFileUtil _fileUtil;
+    private readonly IResourcesPathUtil _resourcesPathUtil;
 
-    public EmailDisposableValidator(IFileUtil fileUtil, IStringUtil stringUtil, ILogger<EmailDisposableValidator> logger) : base(logger)
+    public EmailDisposableValidator(IFileUtil fileUtil, IResourcesPathUtil resourcesPathUtil, IStringUtil stringUtil, ILogger<EmailDisposableValidator> logger) : base(logger)
     {
         _fileUtil = fileUtil;
+        _resourcesPathUtil = resourcesPathUtil;
         _stringUtil = stringUtil;
 
         _emailDomainsSet = new AsyncSingleton<HashSet<string>>(CreateEmailDomainsSet);
@@ -30,7 +32,7 @@ public sealed class EmailDisposableValidator : Validator.Validator, IEmailDispos
 
     private async ValueTask<HashSet<string>> CreateEmailDomainsSet(CancellationToken token)
     {
-        string path = await ResourcesPathUtil.GetResourceFilePath("data-email-disposables.txt", token).NoSync();
+        string path = await _resourcesPathUtil.GetResourceFilePath("data-email-disposables.txt", token).NoSync();
 
         return await _fileUtil.ReadToHashSet(path, StringComparer.InvariantCultureIgnoreCase, cancellationToken: token)
             .NoSync();
