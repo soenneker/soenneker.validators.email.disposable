@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Soenneker.Utils.File.Registrars;
+using Soenneker.Utils.Paths.Resources.Registrars;
 using Soenneker.Utils.String.Registrars;
 using Soenneker.Validators.Email.Disposable.Abstract;
 
@@ -16,7 +17,8 @@ public static class EmailDisposableValidatorRegistrar
     /// </summary>
     public static IServiceCollection AddEmailDisposableValidatorAsSingleton(this IServiceCollection services)
     {
-        services.AddFileUtilAsSingleton().AddStringUtilAsSingleton().TryAddSingleton<IEmailDisposableValidator, EmailDisposableValidator>();
+        services.AddResourcesPathUtilAsSingleton().
+            AddFileUtilAsSingleton().AddStringUtilAsSingleton().TryAddSingleton<IEmailDisposableValidator, EmailDisposableValidator>();
 
         return services;
     }
@@ -26,7 +28,8 @@ public static class EmailDisposableValidatorRegistrar
     /// </summary>
     public static IServiceCollection AddEmailDisposableValidatorAsScoped(this IServiceCollection services)
     {
-        services.AddFileUtilAsScoped().AddStringUtilAsScoped().TryAddScoped<IEmailDisposableValidator, EmailDisposableValidator>();
+        services.AddResourcesPathUtilAsScoped().
+            AddFileUtilAsScoped().AddStringUtilAsScoped().TryAddScoped<IEmailDisposableValidator, EmailDisposableValidator>();
 
         return services;
     }
