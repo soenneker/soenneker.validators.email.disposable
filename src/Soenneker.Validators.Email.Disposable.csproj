@@ -43,7 +43,7 @@
     <ItemGroup>
         <PackageReference Include="Soenneker.Data.Email.Disposables" Version="4.0.791" PrivateAssets="analyzers;build">
         </PackageReference>
-        <PackageReference Include="Soenneker.Extensions.Enumerable.String" Version="4.0.1295" />
+        <PackageReference Include="Soenneker.Extensions.Enumerable.String" Version="4.0.1298" />
         <PackageReference Include="Soenneker.Utils.File" Version="4.0.2085" />
         <PackageReference Include="Soenneker.Utils.String" Version="4.0.2906" />
         <PackageReference Include="Soenneker.Validators.Validator" Version="4.0.715" />
