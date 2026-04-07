@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
@@ -47,7 +48,6 @@
         <PackageReference Include="Soenneker.Data.Email.Disposables" Version="4.0.877" PrivateAssets="analyzers;build">
         </PackageReference>
         <PackageReference Include="Soenneker.Extensions.Enumerable.String" Version="4.0.1338" />
-        <PackageReference Include="Soenneker.Utils.File" Version="4.0.2136" />
         <PackageReference Include="Soenneker.Utils.String" Version="4.0.2958" />
         <PackageReference Include="Soenneker.Validators.Validator" Version="4.0.722" />
         <PackageReference Include="Soenneker.Utils.Paths.Resources" Version="4.0.132" />
