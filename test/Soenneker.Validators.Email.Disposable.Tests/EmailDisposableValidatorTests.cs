@@ -1,23 +1,22 @@
 using System.Threading.Tasks;
 using AwesomeAssertions;
 using Soenneker.Validators.Email.Disposable.Abstract;
-using Soenneker.Tests.FixturedUnit;
-using Xunit;
+using Soenneker.Tests.HostedUnit;
 
 
 namespace Soenneker.Validators.Email.Disposable.Tests;
 
-[Collection("Collection")]
-public class EmailDisposableValidatorTests : FixturedUnitTest
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
+public class EmailDisposableValidatorTests : HostedUnitTest
 {
     private readonly IEmailDisposableValidator _validator;
 
-    public EmailDisposableValidatorTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
+    public EmailDisposableValidatorTests(Host host) : base(host)
     {
         _validator = Resolve<IEmailDisposableValidator>(true);
     }
 
-    [Fact]
+    [Test]
     public async Task Should_NotHaveValidationError_When_EmailIsNotDisposable()
     {
         const string email = "test@gmail.com";
@@ -27,7 +26,7 @@ public class EmailDisposableValidatorTests : FixturedUnitTest
         result.Should().BeTrue();
     }
 
-    [Fact]
+    [Test]
     public async Task Should_HaveValidationError_When_EmailIsDisposable()
     {
         const string email = "test@mailinator.com";
