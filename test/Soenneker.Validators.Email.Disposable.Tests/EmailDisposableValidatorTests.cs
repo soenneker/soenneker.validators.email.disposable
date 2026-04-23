@@ -21,7 +21,7 @@ public class EmailDisposableValidatorTests : HostedUnitTest
     {
         const string email = "test@gmail.com";
 
-        bool result = await _validator.Validate(email, cancellationToken: CancellationToken);
+        bool result = await _validator.Validate(email, cancellationToken: System.Threading.CancellationToken.None);
 
         result.Should().BeTrue();
     }
@@ -31,7 +31,7 @@ public class EmailDisposableValidatorTests : HostedUnitTest
     {
         const string email = "test@mailinator.com";
 
-        bool result = await _validator.Validate(email, cancellationToken: CancellationToken);
+        bool result = await _validator.Validate(email, cancellationToken: System.Threading.CancellationToken.None);
 
         result.Should().BeFalse();
     }
