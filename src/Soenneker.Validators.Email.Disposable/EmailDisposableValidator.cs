@@ -87,11 +87,18 @@ public sealed class EmailDisposableValidator : Validator.Validator, IEmailDispos
         return true;
     }
 
+    /// <summary>
+    /// Asynchronously releases resources used by the current instance.
+    /// </summary>
+    /// <returns>A task that represents the asynchronous operation.</returns>
     public ValueTask DisposeAsync()
     {
         return _emailDomainsSet.DisposeAsync();
     }
 
+    /// <summary>
+    /// Releases resources used by the current instance.
+    /// </summary>
     public void Dispose()
     {
         _emailDomainsSet.Dispose();
