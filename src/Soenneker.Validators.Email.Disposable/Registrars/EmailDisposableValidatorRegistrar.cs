@@ -15,6 +15,8 @@ public static class EmailDisposableValidatorRegistrar
     /// <summary>
     /// Adds <see cref="IEmailDisposableValidator"/> as a singleton service. Recommended if you don't want to load the resource every time the validator is instantiated.
     /// </summary>
+    /// <param name="services">Service collection that receives the registration.</param>
+    /// <returns>The same service collection, so additional registrations can be chained.</returns>
     public static IServiceCollection AddEmailDisposableValidatorAsSingleton(this IServiceCollection services)
     {
         services.AddResourcesPathUtilAsSingleton().
@@ -26,6 +28,8 @@ public static class EmailDisposableValidatorRegistrar
     /// <summary>
     /// Adds <see cref="IEmailDisposableValidator"/> as a scoped service. <para/>
     /// </summary>
+    /// <param name="services">Service collection that receives the registration.</param>
+    /// <returns>The same service collection, so additional registrations can be chained.</returns>
     public static IServiceCollection AddEmailDisposableValidatorAsScoped(this IServiceCollection services)
     {
         services.AddResourcesPathUtilAsScoped().
