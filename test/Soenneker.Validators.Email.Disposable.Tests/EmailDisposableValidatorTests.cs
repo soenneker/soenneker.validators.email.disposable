@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Threading.Tasks;
 using AwesomeAssertions;
 using Soenneker.Validators.Email.Disposable.Abstract;
@@ -17,21 +18,21 @@ public class EmailDisposableValidatorTests : HostedUnitTest
     }
 
     [Test]
-    public async Task Should_NotHaveValidationError_When_EmailIsNotDisposable()
+    public async Task Should_NotHaveValidationError_When_EmailIsNotDisposable(CancellationToken cancellationToken)
     {
         const string email = "test@gmail.com";
 
-        bool result = await _validator.Validate(email, cancellationToken: System.Threading.CancellationToken.None);
+        bool result = await _validator.Validate(email, cancellationToken: cancellationToken);
 
         result.Should().BeTrue();
     }
 
     [Test]
-    public async Task Should_HaveValidationError_When_EmailIsDisposable()
+    public async Task Should_HaveValidationError_When_EmailIsDisposable(CancellationToken cancellationToken)
     {
         const string email = "test@mailinator.com";
 
-        bool result = await _validator.Validate(email, cancellationToken: System.Threading.CancellationToken.None);
+        bool result = await _validator.Validate(email, cancellationToken: cancellationToken);
 
         result.Should().BeFalse();
     }
