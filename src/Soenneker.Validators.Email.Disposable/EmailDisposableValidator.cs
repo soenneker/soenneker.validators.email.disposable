@@ -13,6 +13,7 @@ using Soenneker.Extensions.String;
 
 namespace Soenneker.Validators.Email.Disposable;
 
+/// <inheritdoc cref="IEmailDisposableValidator" />
 public sealed class EmailDisposableValidator : Validator.Validator, IEmailDisposableValidator
 {
     private readonly IStringUtil _stringUtil;
