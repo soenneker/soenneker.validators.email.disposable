@@ -42,10 +42,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Soenneker.Data.Email.Disposables" Version="4.0.1063" PrivateAssets="analyzers;build">
+        <PackageReference Include="Soenneker.Data.Email.Disposables" Version="4.0.1064" PrivateAssets="analyzers;build">
         </PackageReference>
         <PackageReference Include="Soenneker.Extensions.Enumerable.String" Version="4.0.1444" />
-        <PackageReference Include="Soenneker.Utils.String" Version="4.0.3205" />
+        <PackageReference Include="Soenneker.Utils.String" Version="4.0.3206" />
         <PackageReference Include="Soenneker.Validators.Validator" Version="4.0.739" />
         <PackageReference Include="Soenneker.Utils.Paths.Resources" Version="4.0.251" />
     </ItemGroup>
