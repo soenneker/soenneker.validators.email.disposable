@@ -25,4 +25,7 @@
     <ItemGroup>
         <ProjectReference Include="..\..\src\Soenneker.Validators.Email.Disposable\Soenneker.Validators.Email.Disposable.csproj" />
     </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="AwesomeAssertions" Version="9.6.0" />
+    </ItemGroup>
 </Project>
