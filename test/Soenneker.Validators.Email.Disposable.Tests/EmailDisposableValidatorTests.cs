@@ -18,7 +18,7 @@ public class EmailDisposableValidatorTests : HostedUnitTest
     }
 
     [Test]
-    public async Task Should_NotHaveValidationError_When_EmailIsNotDisposable(CancellationToken cancellationToken)
+    public async ValueTask Should_NotHaveValidationError_When_EmailIsNotDisposable(CancellationToken cancellationToken)
     {
         const string email = "test@gmail.com";
 
@@ -28,7 +28,7 @@ public class EmailDisposableValidatorTests : HostedUnitTest
     }
 
     [Test]
-    public async Task Should_HaveValidationError_When_EmailIsDisposable(CancellationToken cancellationToken)
+    public async ValueTask Should_HaveValidationError_When_EmailIsDisposable(CancellationToken cancellationToken)
     {
         const string email = "test@mailinator.com";
 
