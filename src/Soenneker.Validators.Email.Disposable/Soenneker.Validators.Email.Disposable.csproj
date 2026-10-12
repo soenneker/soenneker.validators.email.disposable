@@ -50,6 +50,6 @@
         <PackageReference Include="Soenneker.Utils.Paths.Resources" Version="4.0.279" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Soenneker.Extensions.ValueTask" Version="4.0.125" />
+        <PackageReference Include="Soenneker.Extensions.ValueTask" Version="4.0.126" />
     </ItemGroup>
 </Project>
