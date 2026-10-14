@@ -45,11 +45,11 @@
     <ItemGroup>
         <PackageReference Include="Soenneker.Data.Email.Disposables" Version="4.0.1098" PrivateAssets="analyzers;build">
         </PackageReference>
-        <PackageReference Include="Soenneker.Utils.String" Version="4.0.3268" />
-        <PackageReference Include="Soenneker.Validators.Validator" Version="4.0.745" />
-        <PackageReference Include="Soenneker.Utils.Paths.Resources" Version="4.0.283" />
+        <PackageReference Include="Soenneker.Utils.String" Version="4.0.3274" />
+        <PackageReference Include="Soenneker.Validators.Validator" Version="4.0.751" />
+        <PackageReference Include="Soenneker.Utils.Paths.Resources" Version="4.0.291" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Soenneker.Extensions.ValueTask" Version="4.0.127" />
+        <PackageReference Include="Soenneker.Extensions.ValueTask" Version="4.0.132" />
     </ItemGroup>
 </Project>
