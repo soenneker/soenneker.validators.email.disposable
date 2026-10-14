@@ -43,13 +43,13 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Soenneker.Data.Email.Disposables" Version="4.0.1098" PrivateAssets="analyzers;build">
+        <PackageReference Include="Soenneker.Data.Email.Disposables" Version="4.0.1099" PrivateAssets="analyzers;build">
         </PackageReference>
         <PackageReference Include="Soenneker.Utils.String" Version="4.0.3277" />
         <PackageReference Include="Soenneker.Validators.Validator" Version="4.0.752" />
-        <PackageReference Include="Soenneker.Utils.Paths.Resources" Version="4.0.295" />
+        <PackageReference Include="Soenneker.Utils.Paths.Resources" Version="4.0.296" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Soenneker.Extensions.ValueTask" Version="4.0.132" />
+        <PackageReference Include="Soenneker.Extensions.ValueTask" Version="4.0.133" />
     </ItemGroup>
 </Project>
